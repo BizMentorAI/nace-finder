@@ -1,11 +1,6 @@
-;; shadow-cljs configuration
-{:source-paths
- ["src/dev"
-  "src/main"
-  "src/test"]
-
- :dependencies
- []
-
+{:deps true
+ :dev-http {4000 "public"}
  :builds
- {}}
+ {:app {:target :esm
+        :output-dir "public/js"
+        :modules {:main {:exports {default bm.nace-finder/main}}}}}}
