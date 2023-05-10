@@ -4,6 +4,15 @@
             [hiccups.runtime :as hiccupsrt]))
 
 (def styles "
+  header#main {
+    background: red;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  header#main h1 {
+    margin-top: 0;
+  }
 ")
 
 (defclass Header
@@ -11,10 +20,11 @@
 
   (constructor [this]
                (super)
-               (set! this -innerHTML
-                     (str
-                      (html [:style styles])
-                      (html [:header]))))
+               (let [shadow (.attachShadow this #js {:mode "open"})]
+                 (set! shadow -innerHTML
+                       (str
+                        (html [:style styles])
+                        (html [:header#main [:h1 "NACE code finder"]])))))
 
   Object
   (connectedCallback [this]

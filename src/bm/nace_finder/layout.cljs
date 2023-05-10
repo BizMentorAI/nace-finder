@@ -25,9 +25,9 @@
                (set! this -innerHTML
                      (str
                       (html [:style styles])
-                      (html [:bm-header])
-                      (html [:slot])
-                      (html [:bm-footer]))))
+                      "<bm-header></bm-header>"
+                      "<slot></slot>"
+                      "<bm-footer></bm-footer>")))
 
   Object
   (connectedCallback [this]

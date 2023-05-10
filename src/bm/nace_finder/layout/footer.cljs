@@ -4,6 +4,9 @@
             [hiccups.runtime :as hiccupsrt]))
 
 (def styles "
+  footer#main {
+    background: red;
+  }
 ")
 
 (defclass Footer
@@ -11,10 +14,11 @@
 
   (constructor [this]
                (super)
-               (set! this -innerHTML
-                     (str
-                      (html [:style styles])
-                      (html [:footer]))))
+               (let [shadow (.attachShadow this #js {:mode "open"})]
+                 (set! shadow -innerHTML
+                       (str
+                        (html [:style styles])
+                        (html [:footer#main [:p "2023"]])))))
 
   Object
   (connectedCallback [this]
