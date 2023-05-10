@@ -1,0 +1,18 @@
+* About
+
+NACE code finder.
+
+* Usage
+** Development
+#+name: start
+#+begin_src sh :task yes :doc "Start a development server"
+  # et README.org start
+  npx shadow-cljs watch app
+#+end_src
+
+** Production build
+#+name: release
+#+begin_src sh :task yes :doc "Build the production JS"
+  # et README.org release
+  npx shadow-cljs release app
+#+end_src
