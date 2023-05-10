@@ -1,13 +1,33 @@
 (ns bm.nace-finder.layout
-  (:require [shadow.cljs.modern :refer (defclass)]))
+  (:require-macros [hiccups.core :as hiccups :refer (html)])
+  (:require [shadow.cljs.modern :refer (defclass)]
+            [hiccups.runtime :as hiccupsrt]
+            [bm.nace-finder.layout.header]
+            [bm.nace-finder.layout.footer]))
+
+(def styles "
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: yellow;
+  }
+")
 
 (defclass Layout
   (extends js/HTMLElement)
 
   (constructor [this]
                (super)
-               (let [shadow (.attachShadow this #js {:mode "open"})]
-                 (set! shadow -innerHTML "<slot></slot>")))
+               (set! this -innerHTML
+                     (str
+                      (html [:style styles])
+                      (html [:bm-header])
+                      (html [:slot])
+                      (html [:bm-footer]))))
 
   Object
   (connectedCallback [this]
@@ -15,20 +35,3 @@
 
 (when-not (js/window.customElements.get "bm-layout")
   (js/window.customElements.define "bm-layout" Layout))
-
-;; const shadow = this.attachShadow({mode: 'open'})
-
-;;   shadow.innerHTML = `
-;;   <style>
-;;     html {
-;;       width: 100%;
-;;       height: 100%;
-;;     }
-
-;;     body {
-;;       margin: 0;
-;;     }
-;;   </style>
-
-;;   <site-header></site-header>
-;;   <slot></slot>
