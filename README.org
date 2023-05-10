@@ -16,3 +16,13 @@ NACE code finder.
   # et README.org release
   npx shadow-cljs release app
 #+end_src
+
+* Deployment
+- Build the production code: ~et README.org release~.
+- Back-up the ~public~ directory so it won't be overwritten by Git: ~cp -R public p~.
+- Switch to the ~build~ branch: ~git co build~.
+- Update the ~public~ directory: ~rm -rf public && mv p public~.
+- Commit the fecker: ~git add public && git commit -m "New release"~.
+
+** Hosting
+[[https://app.netlify.com/sites/precious-creponne-1ffef4/overview][Netlify app]].
