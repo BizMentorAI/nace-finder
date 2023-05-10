@@ -5,10 +5,14 @@
   (extends js/HTMLElement)
 
   (constructor [this]
-    (super))
+               (super)
+               (let [shadow (.attachShadow this #js{:mode "open"})]
+                 (set! shadow -innerHTML "<h1>Nace finder</h1>")))
+
 
   Object
   (connectedCallback [this]
-    (js/console.log "bm-nace-finder" this)))
+                     (js/console.log "bm-nace-finder" this)))
 
-(js/window.customElements.define "bm-nace-layout" NaceFinder)
+(when-not (js/window.customElements.get "bm-nace-finder")
+  (js/window.customElements.define "bm-nace-finder" NaceFinder))
