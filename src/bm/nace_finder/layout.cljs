@@ -13,8 +13,8 @@
 
   bm-header {
     grid-area: header;
-    background: red;
-    color: white;
+    /*background: red;
+    color: white;*/
   }
 
   main {
@@ -24,8 +24,8 @@
 
   bm-footer {
     grid-area: footer;
-    background: red;
-    color: white;
+    /*background: red;
+    color: white;*/
   }
 ")
 
@@ -41,11 +41,7 @@
                         "<style>" styles "</style>"
                         "<bm-header></bm-header>"
                         "<main><slot></slot></main>"
-                        "<bm-footer></bm-footer>"))))
-
-  Object
-  (connectedCallback [this]
-                     (js/console.log "bm-layout" this)))
+                        "<bm-footer></bm-footer>")))))
 
 (when-not (js/window.customElements.get "bm-layout")
   (js/window.customElements.define "bm-layout" Layout))

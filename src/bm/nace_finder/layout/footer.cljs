@@ -20,11 +20,7 @@
                  (set! shadow -innerHTML
                        (str
                         (html [:style styles])
-                        (html [:footer [:div "2023"]])))))
-
-  Object
-  (connectedCallback [this]
-                     (js/console.log "bm-footer" this)))
+                        (html [:footer [:div "2023"]]))))))
 
 (when-not (js/window.customElements.get "bm-footer")
   (js/window.customElements.define "bm-footer" Footer))

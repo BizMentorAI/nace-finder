@@ -48,11 +48,7 @@
                                [:ul
                                 [:li "fast"]
                                 [:li "easy"]
-                                [:li "accurate"]]])))))
-
-  Object
-  (connectedCallback [this]
-                     (js/console.log "bm-header" this)))
+                                [:li "accurate"]]]))))))
 
 (when-not (js/window.customElements.get "bm-header")
   (js/window.customElements.define "bm-header" Header))

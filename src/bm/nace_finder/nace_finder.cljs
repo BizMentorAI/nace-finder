@@ -1,7 +1,8 @@
 (ns bm.nace-finder.nace-finder
   (:require-macros [hiccups.core :as hiccups :refer (html)])
   (:require [shadow.cljs.modern :refer (defclass)]
-            [hiccups.runtime :as hiccupsrt]))
+            [hiccups.runtime :as hiccupsrt]
+            [bm.components.autocomplete]))
 
 (def styles "
   p:first-of-type {
@@ -29,21 +30,20 @@
                         (html [:style styles])
                         (html [:p "NACE Codes are a pan-European classification system that groups organisations according to the general nature of their business activities. They are used for statistical purposes by the Central Statistics Office www.cso.ie and the EU."])
 
-                        (html [:h1
-                               [:span.number "1"]
-                               [:span.text "Type or select the main business activity"]])
+                        (html [:form
+                               [:h1
+                                [:span.number "1"]
+                                [:span.text "Type or select the main business activity"]]
+                               "<bm-autocomplete></bm-autocomplete>"
 
-                        ; TODO: autocomplete.
-                        (html [:h1
-                               [:span.number "2"]
-                               [:span.text "Type a product keyword to find the product class"]])
+                               [:h1
+                                [:span.number "2"]
+                                [:span.text "Type a product keyword to find the product class"]]
+                               "<bm-autocomplete></bm-autocomplete>"
 
-                        ; TODO: autocomplete.
-                        (html [:h1
-                               [:span.number "3"]
-                               [:span.text "Your NACE code is"]]
-                               ; TODO: display NACE code.
-                              )))))
+                               [:h1
+                                [:span.number "3"]
+                                [:span.text "Your NACE code is"]]])))))
 
   Object
   (connectedCallback [this]
