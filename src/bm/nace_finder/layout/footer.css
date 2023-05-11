@@ -3,3 +3,9 @@ footer {
   text-align: center;
   color: grey;
 }
+
+@media (max-width: 600px) {
+  footer {
+    padding: 20px 0 17px 0;
+  }
+}
