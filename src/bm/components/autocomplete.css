@@ -6,3 +6,11 @@ input {
   border: 1px solid darkgrey;
   color: grey;
 }
+
+@media (max-width: 600px) {
+  :host {
+    background: lightgreen;
+    padding: 10px 15px;
+    width: 100%;
+  }
+}

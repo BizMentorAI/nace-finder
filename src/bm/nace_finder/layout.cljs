@@ -50,25 +50,3 @@
                               " (" js/window.devicePixelRatio ")"))))
 
 (register-custom-element :bm-layout Layout)
-
-;; /* XS retina */
-;; @media (-webkit-min-device-pixel-ratio: 2) (min-resolution: 192dpi) and (max-width: 1000px) {
-;;   body { background: "red"; }
-;;   #screen::after { content: "XS(r)"; }
-;; }
-
-;; window.matchMedia("(max-width: 700px)")
-;; /* XS */
-;; @media (max-width: 650px) {
-;;   #screen::after { content: "XS"; }
-;; }
-
-;; /* SM */
-;; @media (max-width: 900px) {
-;;   #screen::after { content: "SM"; }
-;; }
-
-;; /* LG */
-;; @media (min-width: 1200px) {
-;;   #screen::after { content: "LG"; }
-;; }
