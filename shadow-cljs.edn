@@ -3,6 +3,5 @@
  :nrepl false
  :builds
  {:app {:target :esm
-        :optimizations :simple
         :output-dir "public/js"
         :modules {:main {:exports {default bm.nace-finder/main}}}}}}
