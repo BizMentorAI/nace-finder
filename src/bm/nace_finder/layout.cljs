@@ -18,9 +18,11 @@
                  (append-child this (tag :main (tag :slot)))
                  (append-child this (tag :bm-footer))
 
+                 (set! dbg -innerHTML (str js/screen.width "x" js/screen.height))
+
                  (when (.isMobileSafari this)
                    (js/console.log "Mobile Safari!")
-                   (set! dbg -innerHTML "i")
+                  (set! dbg -innerHTML (str "(i) " js/screen.width "x" js/screen.height))
                    ;; Fix page height for mobile Safari.
                    ;; Doing this in CSS doesn't work as Chrome matches it also.
                    ;; https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit
