@@ -5,7 +5,6 @@
 
 (def styles "
   header {
-    background: red;
     padding: 20px 0;
     text-align: center;
   }

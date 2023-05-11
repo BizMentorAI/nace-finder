@@ -6,8 +6,6 @@
 (def styles "
   footer {
     padding: 20px 0 30px 0;
-    background: red;
-    color: white;
     text-align: center;
   }
 ")
