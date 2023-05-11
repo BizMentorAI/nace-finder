@@ -24,6 +24,12 @@ NACE code finder.
 - Update the ~public~ directory: ~rm -rf public && mv p public~.
 - Commit the fecker: ~git add public && git commit -m "New release"~.
 
+#+name: deploy
+#+begin_src sh :task yes :doc "Build & deploy"
+  # et README.org deploy
+  npx shadow-cljs release app && cp -R public p && git co build && rm -rf public && mv p public && gca WIP && git co -
+#+end_src
+
 ** Hosting
 - [[https://precious-creponne-1ffef4.netlify.app/][Deployed app]].
 - [[https://app.netlify.com/sites/precious-creponne-1ffef4/overview][Netlify app dashboard]].
