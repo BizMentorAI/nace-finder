@@ -26,6 +26,7 @@
   /* Fix page height for mobile Safari. */
   /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
   min-height: -webkit-fill-available; /* If I disable this, it works (Chrome). */
+  min-height: stretch;
 }
 
 bm-header {

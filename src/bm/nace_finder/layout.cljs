@@ -11,10 +11,35 @@
 
   (constructor [this]
                (super)
-               (append-child this (tag :div {:id "screen"}))
-               (append-child this (tag :style (inline "./layout.css")))
-               (append-child this (tag :bm-header))
-               (append-child this (tag :main (tag :slot)))
-               (append-child this (tag :bm-footer))))
+               (let [dbg (tag :div {:id "screen"})]
+                 (append-child this dbg)
+                 (append-child this (tag :style (inline "./layout.css")))
+                 (append-child this (tag :bm-header))
+                 (append-child this (tag :main (tag :slot)))
+                 (append-child this (tag :bm-footer))
+
+                 (when (.isMobileSafari this)
+                   (js/console.log "Mobile Safari!")
+                   (set! dbg -innerHTML "i")
+                   (set! (. this -css) -minHeight "-webkit-fill-available"))))
+
+  Object
+  (isMobileSafari [this]
+                  (and
+                   (js/window.navigator.userAgent.match #"(?i)iphone|ipad")
+                   (js/window.navigator.userAgent.match #"(?i)WebKit")
+                   (not (js/window.navigator.userAgent.match #"(?i)CriOS")))))
 
 (register-custom-element :bm-layout Layout)
+
+(if (js/window.navigator.userAgent.match #"(?i)iphone|ipad")
+  (js/console.log "iOS")
+  (js/console.log "Not iOS"))
+
+(if (js/window.navigator.userAgent.match #"(?i)WebKit")
+  (js/console.log "Webkit")
+  (js/console.log "Not WebKit"))
+
+(if (js/window.navigator.userAgent.match #"(?i)CriOS")
+  (js/console.log "CriOS")
+  (js/console.log "Not CriOS"))
