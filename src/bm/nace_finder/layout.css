@@ -7,19 +7,23 @@
   color: lightgrey;
 }
 
-@media (max-width: 600px) {
-  #screen::after { content: "XS"; }
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (max-width: 1000px) {
+/* XS retina */
+@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1000px) {
   body { background: "red"; }
   #screen::after { content: "XS(r)"; }
 }
 
+/* XS */
+@media (max-width: 600px) {
+  #screen::after { content: "XS"; }
+}
+
+/* SM */
 @media (max-width: 900px) {
   #screen::after { content: "SM"; }
 }
 
+/* LG */
 @media (min-width: 1200px) {
   #screen::after { content: "LG"; }
 }
