@@ -10,6 +10,6 @@
   (constructor [this]
                (super)
                (append-child this (tag :style (inline "./footer.css")))
-               (append-child this (tag :footer (tag :div "2023")))))
+               (append-child this (tag :footer (tag :div "&copy; 2023")))))
 
 (register-custom-element :bm-footer Footer)

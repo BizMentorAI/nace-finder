@@ -13,9 +13,11 @@
 
   ([tag-name arg]
    (let [element (js/document.createElement (name tag-name))]
-     (if (map? arg)
-       (set-attrs element arg)
-       (do (set! element -innerHTML arg) element)))))
+     (cond
+       (map? arg) (set-attrs element arg)
+       (string? arg) (do (set! element -innerHTML arg) element)
+       ; Otherwise assume nested element.
+       true (do (.appendChild element arg) element)))))
 
 (defn append-child [instance element]
   (.appendChild (.-shadowRoot instance) element))
