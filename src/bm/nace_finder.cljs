@@ -3,13 +3,12 @@
   (:require [bm.nace-finder.layout]
             [bm.nace-finder.nace-finder]))
 
-(defn ^:dev/after-load render
-  "Render bm-web and rerender it after each change." []
-  ;(js/console.clear)
-  ;(.render root (r/as-element [current-page]))
-  )
+;; (defn ^:dev/after-load render
+;;   "Render bm-web and rerender it after each change." []
+;;   (js/console.log "Rerendered")
+;;   ;(js/console.clear)
+;;   ;(.render root (r/as-element [current-page]))
+;;   )
 
-; FIXME: We don't need export or do we? With ESM.
-(defn ^:export main
-  "Render the whole app." []
-  (render))
+;; (defn main
+;;   "Render the whole app." [])

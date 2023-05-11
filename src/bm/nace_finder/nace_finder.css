@@ -1,0 +1,12 @@
+p:first-of-type {
+  color: darkslategrey;
+}
+
+.number {
+  color: lightgreen;
+}
+
+.text {
+  padding-left: 10px;
+  font-size: 14pt;
+}

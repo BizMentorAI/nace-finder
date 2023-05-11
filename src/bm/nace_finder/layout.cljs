@@ -1,47 +1,19 @@
 (ns bm.nace-finder.layout
   (:require [shadow.cljs.modern :refer (defclass)]
+            [shadow.resource :refer (inline)]
+            [bm.web-components.utils :refer
+             (BMElement tag append-child register-custom-element)]
             [bm.nace-finder.layout.header]
             [bm.nace-finder.layout.footer]))
 
-(def styles "
-  :host {
-    display: grid;
-    height: 100vh;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas: \"header\" \"main\" \"footer\";
-  }
-
-  bm-header {
-    grid-area: header;
-    /*background: red;
-    color: white;*/
-  }
-
-  main {
-    grid-area: main;
-    padding: 25px;
-  }
-
-  bm-footer {
-    grid-area: footer;
-    /*background: red;
-    color: white;*/
-  }
-")
-
 (defclass Layout
-  (extends js/HTMLElement)
+  (extends BMElement)
 
   (constructor [this]
                (super)
+               (append-child this (tag :style (inline "./layout.css")))
+               (append-child this (tag :bm-header))
+               (append-child this (tag :main "<slot></slot>"))
+               (append-child this (tag :bm-footer))))
 
-               (let [shadow (.attachShadow this #js {:mode "open"})]
-                 (set! shadow -innerHTML
-                       (str
-                        "<style>" styles "</style>"
-                        "<bm-header></bm-header>"
-                        "<main><slot></slot></main>"
-                        "<bm-footer></bm-footer>")))))
-
-(when-not (js/window.customElements.get "bm-layout")
-  (js/window.customElements.define "bm-layout" Layout))
+(register-custom-element :bm-layout Layout)

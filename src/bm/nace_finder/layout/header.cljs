@@ -1,54 +1,16 @@
 (ns bm.nace-finder.layout.header
-  (:require-macros [hiccups.core :as hiccups :refer (html)])
   (:require [shadow.cljs.modern :refer (defclass)]
-            [hiccups.runtime :as hiccupsrt]))
-
-(def styles "
-  header {
-    padding: 20px 0;
-    text-align: center;
-  }
-
-  header h1 {
-    margin-top: 0;
-  }
-
-  h1, ul {
-    text-transform: uppercase;
-  }
-
-  ul {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: center;
-    padding-left: 0;
-  }
-
-  li {
-  }
-
-  li + li::before {
-    content: \" | \";
-    padding: 12px;
-  }
-")
+            [shadow.resource :refer (inline)]
+            [bm.web-components.utils :refer
+             (BMElement tag append-child register-custom-element)]))
 
 (defclass Header
-  (extends js/HTMLElement)
+  (extends BMElement)
 
   (constructor [this]
                (super)
-               (let [shadow (.attachShadow this #js {:mode "open"})]
-                 (set! shadow -innerHTML
-                       (str
-                        (html [:style styles])
-                        (html [:header
-                               [:h1 "NACE lookup"]
-                               [:ul
-                                [:li "fast"]
-                                [:li "easy"]
-                                [:li "accurate"]]]))))))
+               (append-child this (tag :style (inline "./header.css")))
+               (append-child this (tag :h1 "NACE lookup"))
+               (append-child this (tag :ul "<li>fast</li><li>easy</li><li>accurate</li>"))))
 
-(when-not (js/window.customElements.get "bm-header")
-  (js/window.customElements.define "bm-header" Header))
+(register-custom-element :bm-header Header)

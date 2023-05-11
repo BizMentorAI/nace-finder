@@ -1,53 +1,18 @@
 (ns bm.nace-finder.nace-finder
-  (:require-macros [hiccups.core :as hiccups :refer (html)])
   (:require [shadow.cljs.modern :refer (defclass)]
-            [hiccups.runtime :as hiccupsrt]
+            [shadow.resource :refer (inline)]
+            [bm.web-components.utils :refer
+             (BMElement tag append-child register-custom-element)]
             [bm.components.autocomplete]))
 
-(def styles "
-  p:first-of-type {
-    color: darkslategrey;
-  }
-
-  .number {
-    color: lightgreen;
-  }
-
-  .text {
-    padding-left: 10px;
-    font-size: 14pt;
-  }
-")
-
 (defclass NaceFinder
-  (extends js/HTMLElement)
+  (extends BMElement)
 
   (constructor [this]
                (super)
-               (let [shadow (.attachShadow this #js {:mode "open"})]
-                 (set! shadow -innerHTML
-                       (str
-                        (html [:style styles])
-                        (html [:p "NACE Codes are a pan-European classification system that groups organisations according to the general nature of their business activities. They are used for statistical purposes by the Central Statistics Office www.cso.ie and the EU."])
+               (append-child this (tag :style (inline "./nace_finder.css")))
+               (append-child this (tag :p "NACE Codes are a pan-European classification system that groups organisations according to the general nature of their business activities. They are used for statistical purposes by the Central Statistics Office <a href='https://www.cso.ie'>www.cso.ie</a> and the EU."))
+               (append-child this (tag :h3 "Instantly identify the NACE and CPA codes you require:"))
+               (append-child this (tag :bm-autocomplete))))
 
-                        (html [:form
-                               [:h1
-                                [:span.number "1"]
-                                [:span.text "Type or select the main business activity"]]
-                               "<bm-autocomplete></bm-autocomplete>"
-
-                               [:h1
-                                [:span.number "2"]
-                                [:span.text "Type a product keyword to find the product class"]]
-                               "<bm-autocomplete></bm-autocomplete>"
-
-                               [:h1
-                                [:span.number "3"]
-                                [:span.text "Your NACE code is"]]])))))
-
-  Object
-  (connectedCallback [this]
-                     (js/console.log "bm-nace-finder" this)))
-
-(when-not (js/window.customElements.get "bm-nace-finder")
-  (js/window.customElements.define "bm-nace-finder" NaceFinder))
+(register-custom-element :bm-nace-finder NaceFinder)

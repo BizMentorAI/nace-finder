@@ -1,26 +1,15 @@
 (ns bm.nace-finder.layout.footer
-  (:require-macros [hiccups.core :as hiccups :refer (html)])
   (:require [shadow.cljs.modern :refer (defclass)]
-            [hiccups.runtime :as hiccupsrt]))
-
-(def styles "
-  footer {
-    padding: 20px 0 30px 0;
-    text-align: center;
-  }
-")
-
+            [shadow.resource :refer (inline)]
+            [bm.web-components.utils :refer
+             (BMElement tag append-child register-custom-element)]))
 
 (defclass Footer
-  (extends js/HTMLElement)
+  (extends BMElement)
 
   (constructor [this]
                (super)
-               (let [shadow (.attachShadow this #js {:mode "open"})]
-                 (set! shadow -innerHTML
-                       (str
-                        (html [:style styles])
-                        (html [:footer [:div "2023"]]))))))
+               (append-child this (tag :style (inline "./footer.css")))
+               (append-child this (tag :footer (tag :div "2023")))))
 
-(when-not (js/window.customElements.get "bm-footer")
-  (js/window.customElements.define "bm-footer" Footer))
+(register-custom-element :bm-footer Footer)

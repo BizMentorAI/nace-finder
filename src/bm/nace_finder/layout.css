@@ -1,0 +1,23 @@
+:host {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: \"header\" \"main\" \"footer\";
+}
+
+bm-header {
+  grid-area: header;
+  /*background: red;
+  color: white;*/
+}
+
+main {
+  grid-area: main;
+  padding: 25px;
+}
+
+bm-footer {
+  grid-area: footer;
+  /*background: red;
+  color: white;*/
+}

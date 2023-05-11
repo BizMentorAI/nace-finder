@@ -32,3 +32,11 @@
 ;; (component :bm-autocomplete :Autocomplete
 ;;            :styles styles
 ;;            :render (fn [shadow-root]))
+
+;; (value [this] (.-value input))
+;; (setValue [this value] (set! input -value value))
+; Actually this might require the use of getters above ^.
+; (js/Object.defineProperty Autocomplete.prototype "value" #js {:get (fn [] ...)})
+;
+; Although maybe we want attrs for changes coming from the outside only.
+;(set! (.-observedAttributes Autocomplete) #js ["value"])
