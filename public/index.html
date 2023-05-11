@@ -10,8 +10,10 @@
 
     <style>
       html {
-        width: 100%;
-        height: 100%;
+        width: 100vh;
+        /* Fix page height for mobile Safari. */
+        /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
+        height: -webkit-fill-available;
         font-family: Helvetica;
       }
 
