@@ -1,8 +1,8 @@
 input {
-  /* padding: 10px 15px; */
-  width: 85%;
+  padding: 10px 15px;
+  width: 100%;
   font-size: 12pt;
-  border-radius: 12px;
+  border-radius: 25px;
   border: 1px solid darkgrey;
   color: grey;
 }
