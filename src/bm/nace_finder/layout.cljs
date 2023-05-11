@@ -11,6 +11,7 @@
 
   (constructor [this]
                (super)
+               (append-child this (tag :div {:id "screen"}))
                (append-child this (tag :style (inline "./layout.css")))
                (append-child this (tag :bm-header))
                (append-child this (tag :main (tag :slot)))

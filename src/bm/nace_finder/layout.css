@@ -1,3 +1,24 @@
+#screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  font-size: 8pt;
+  color: lightgrey;
+}
+
+@media (max-width: 600px) {
+  #screen::before { content: "XS"; }
+}
+
+@media (max-width: 900px) {
+  #screen::before { content: "SM"; }
+}
+
+@media (min-width: 1200px) {
+  #screen::before { content: "LG"; }
+}
+
 :host {
   display: flex;
   flex-direction: column;

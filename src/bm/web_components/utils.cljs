@@ -3,7 +3,7 @@
 
 (defn- set-attrs [element map]
   (reduce-kv (fn [element key value]
-               (.setAttribute element key value))
+               (.setAttribute element (name key) value))
              element map)
   element)
 
