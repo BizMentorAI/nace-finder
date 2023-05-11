@@ -8,25 +8,21 @@
 }
 
 @media (max-width: 600px) {
-  #screen::before { content: "XS"; }
+  #screen::after { content: "XS"; }
 }
 
 @media (max-width: 900px) {
-  #screen::before { content: "SM"; }
+  #screen::after { content: "SM"; }
 }
 
 @media (min-width: 1200px) {
-  #screen::before { content: "LG"; }
+  #screen::after { content: "LG"; }
 }
 
 :host {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* Fix page height for mobile Safari. */
-  /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
-  min-height: -webkit-fill-available; /* If I disable this, it works (Chrome). */
-  min-height: stretch;
 }
 
 bm-header {
