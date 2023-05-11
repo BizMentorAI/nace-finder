@@ -8,13 +8,13 @@
 }
 
 /* XS retina */
-@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1000px) {
+@media (-webkit-min-device-pixel-ratio: 2) (min-resolution: 192dpi) and (max-width: 1000px) {
   body { background: "red"; }
   #screen::after { content: "XS(r)"; }
 }
 
 /* XS */
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   #screen::after { content: "XS"; }
 }
 
