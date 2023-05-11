@@ -1,21 +1,8 @@
 input {
-  padding: 10px 15px;
-  width: 400px;
+  /* padding: 10px 15px; */
+  width: 85%;
   font-size: 12pt;
   border-radius: 12px;
   border: 1px solid darkgrey;
   color: grey;
-}
-
-@media (max-width: 600px) {
-  :host {
-    background: lightgreen;
-    padding: 10px 15px;
-    width: 85%;
-  }
-
-  h4 {
-    color: red;
-    white-space: wrap;
-  }
 }
