@@ -43,9 +43,9 @@
                    (set! div -innerHTML
                          (str (when (.isMobileSafari this) "(i) ")
                               (cond
-                                (js/window.matchMedia "(max-width: 600px)") "XS "
-                                (js/window.matchMedia "(max-width: 900px)") "SM "
-                                (js/window.matchMedia "(max-width: 1200px)") "LG ")
+                                (.-matches (js/window.matchMedia "(max-width: 600px)")) "XS "
+                                (.-matches (js/window.matchMedia "(max-width: 900px)")) "SM "
+                                (.-matches (js/window.matchMedia "(max-width: 1200px)")) "LG ")
                               js/window.innerWidth "x" js/window.innerHeight
                               " (" js/window.devicePixelRatio ")"))))
 
