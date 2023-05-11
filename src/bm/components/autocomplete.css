@@ -13,4 +13,9 @@ input {
     padding: 10px 15px;
     width: 100%;
   }
+
+  h4 {
+    color: red;
+    white-space: wrap;
+  }
 }
