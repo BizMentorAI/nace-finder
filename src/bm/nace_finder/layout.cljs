@@ -24,7 +24,7 @@
                    ;; Fix page height for mobile Safari.
                    ;; Doing this in CSS doesn't work as Chrome matches it also.
                    ;; https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit
-                   (set! (. this -css) -minHeight "-webkit-fill-available"))))
+                   (js* "this.css.minHeight = '-webkit-fill-available'"))))
 
   Object
   (isMobileSafari [this]
@@ -34,15 +34,3 @@
                    (not (js/window.navigator.userAgent.match #"(?i)CriOS")))))
 
 (register-custom-element :bm-layout Layout)
-
-(if (js/window.navigator.userAgent.match #"(?i)iphone|ipad")
-  (js/console.log "iOS")
-  (js/console.log "Not iOS"))
-
-(if (js/window.navigator.userAgent.match #"(?i)WebKit")
-  (js/console.log "Webkit")
-  (js/console.log "Not WebKit"))
-
-(if (js/window.navigator.userAgent.match #"(?i)CriOS")
-  (js/console.log "CriOS")
-  (js/console.log "Not CriOS"))
