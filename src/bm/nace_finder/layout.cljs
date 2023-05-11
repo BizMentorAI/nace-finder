@@ -8,10 +8,7 @@
     display: grid;
     height: 100vh;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      \"header\"
-      \"main\"
-      \"footer\";
+    grid-template-areas: \"header\" \"main\" \"footer\";
   }
 
   bm-header {
@@ -22,6 +19,7 @@
 
   main {
     grid-area: main;
+    padding: 25px;
   }
 
   bm-footer {

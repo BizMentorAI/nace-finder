@@ -12,6 +12,26 @@
   header h1 {
     margin-top: 0;
   }
+
+  h1, ul {
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  li {
+  }
+
+  li + li::before {
+    content: \" | \";
+    padding: 12px;
+  }
 ")
 
 (defclass Header
@@ -23,7 +43,12 @@
                  (set! shadow -innerHTML
                        (str
                         (html [:style styles])
-                        (html [:header [:h1 "NACE code finder"]])))))
+                        (html [:header
+                               [:h1 "NACE lookup"]
+                               [:ul
+                                [:li "fast"]
+                                [:li "easy"]
+                                [:li "accurate"]]])))))
 
   Object
   (connectedCallback [this]
