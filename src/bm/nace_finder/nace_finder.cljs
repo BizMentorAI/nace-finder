@@ -6,18 +6,10 @@
 
   (constructor [this]
                (super)
-               (let [shadow (.attachShadow this #js{:mode "open"})]
-                 (set! shadow -innerHTML "<h1>Nace finder</h1>")))
-  ;; (constructor [this]
-  ;;              (super)
-  ;;              (let [shadow (.attachShadow this #js {:mode "open"})]
-  ;;                (set! shadow -innerHTML
-  ;;                      (str
-  ;;                       (html [:style styles])
-  ;;                       (html [:bm-header])
-  ;;                       (html [:slot])
-  ;;                       (html [:bm-footer])))))
-
+                     (js/console.log "bm-nace-finder" this)
+               (let [shadow (.attachShadow this #js {:mode "open"})]
+                 (set! shadow -innerHTML
+                       (str "<h1>Nace finder</h1>"))))
 
   Object
   (connectedCallback [this]

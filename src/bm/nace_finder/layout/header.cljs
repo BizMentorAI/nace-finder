@@ -4,13 +4,13 @@
             [hiccups.runtime :as hiccupsrt]))
 
 (def styles "
-  header#main {
+  header {
     background: red;
     padding: 20px 0;
     text-align: center;
   }
 
-  header#main h1 {
+  header h1 {
     margin-top: 0;
   }
 ")
@@ -24,7 +24,7 @@
                  (set! shadow -innerHTML
                        (str
                         (html [:style styles])
-                        (html [:header#main [:h1 "NACE code finder"]])))))
+                        (html [:header [:h1 "NACE code finder"]])))))
 
   Object
   (connectedCallback [this]

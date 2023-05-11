@@ -1,7 +1,5 @@
 (ns bm.nace-finder.layout
-  (:require-macros [hiccups.core :as hiccups :refer (html)])
   (:require [shadow.cljs.modern :refer (defclass)]
-            [hiccups.runtime :as hiccupsrt]
             [bm.nace-finder.layout.header]
             [bm.nace-finder.layout.footer]))
 
@@ -17,17 +15,24 @@
   }
 ")
 
+; We don't want to use Shadow DOM, so we can fuck with the overall
+; document in order to set up the layout styles properly.
+; The downside is that the slots are not working and which is why
+; we are using the work-around below.
+
 (defclass Layout
   (extends js/HTMLElement)
 
   (constructor [this]
                (super)
-               (set! this -innerHTML
-                     (str
-                      (html [:style styles])
-                      "<bm-header></bm-header>"
-                      "<slot></slot>"
-                      "<bm-footer></bm-footer>")))
+               (let [original-children (. this -childNodes)]
+                 (let [style (js/document.createElement "style")]
+                   (set! style -innerText styles)
+                   (.prepend this style))
+
+                 (.prepend this (js/document.createElement "bm-header"))
+                 ; Here will be the original children.
+                 (.appendChild this (js/document.createElement "bm-footer"))))
 
   Object
   (connectedCallback [this]

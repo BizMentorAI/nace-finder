@@ -4,7 +4,7 @@
             [hiccups.runtime :as hiccupsrt]))
 
 (def styles "
-  footer#main {
+  footer {
     background: red;
   }
 ")
@@ -18,7 +18,7 @@
                  (set! shadow -innerHTML
                        (str
                         (html [:style styles])
-                        (html [:footer#main [:p "2023"]])))))
+                        (html [:footer [:p "2023"]])))))
 
   Object
   (connectedCallback [this]
