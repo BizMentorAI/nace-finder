@@ -13,7 +13,7 @@
                (super)
                (append-child this (tag :style (inline "./layout.css")))
                (append-child this (tag :bm-header))
-               (append-child this (tag :main "<slot></slot>"))
+               (append-child this (tag :main (tag :slot)))
                (append-child this (tag :bm-footer))))
 
 (register-custom-element :bm-layout Layout)

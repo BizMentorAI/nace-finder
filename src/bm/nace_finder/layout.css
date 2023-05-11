@@ -1,26 +1,30 @@
 :host {
-  display: grid;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   /* Fix page height for mobile Safari. */
   /* https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit */
-  min-height: -webkit-fill-available;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "header" "main" "footer";
+  height: -webkit-fill-available;
+  /* grid-template-rows: auto 1fr auto; */
+  /* grid-template-areas: "header" "main" "footer"; */
 }
 
 bm-header {
-  grid-area: header;
+  /* grid-area: header; */
   /*background: red;
   color: white;*/
 }
 
 main {
-  grid-area: main;
+  flex: 100;
+  /* align-self: stretch; */
+  /* min-height: 100vh; */
+  /* grid-area: main; */
   margin: 25px auto;
 }
 
 bm-footer {
-  grid-area: footer;
+  /* grid-area: footer; */
   /*background: red;
   color: white;*/
 }
