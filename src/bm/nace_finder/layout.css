@@ -11,6 +11,11 @@
   #screen::after { content: "XS"; }
 }
 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) and (max-width: 1000px) {
+  body { background: "red"; }
+  #screen::after { content: "XS(r)"; }
+}
+
 @media (max-width: 900px) {
   #screen::after { content: "SM"; }
 }
@@ -26,21 +31,16 @@
 }
 
 bm-header {
-  /* grid-area: header; */
   /*background: red;
   color: white;*/
 }
 
 main {
   flex: 100;
-  /* align-self: stretch; */
-  /* min-height: 100vh; */
-  /* grid-area: main; */
   margin: 25px auto;
 }
 
 bm-footer {
-  /* grid-area: footer; */
   /*background: red;
   color: white;*/
 }
