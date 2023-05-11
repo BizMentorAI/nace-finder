@@ -5,9 +5,13 @@
 
 (def styles "
   footer {
+    padding: 20px 0 30px 0;
     background: red;
+    color: white;
+    text-align: center;
   }
 ")
+
 
 (defclass Footer
   (extends js/HTMLElement)
@@ -18,7 +22,7 @@
                  (set! shadow -innerHTML
                        (str
                         (html [:style styles])
-                        (html [:footer [:p "2023"]])))))
+                        (html [:footer [:div "2023"]])))))
 
   Object
   (connectedCallback [this]
