@@ -32,10 +32,14 @@
                               (.matchL4Item this l4-item))
                             data)))
 
-  ; Either return nil or
-  ; {"L4 title": [L6 item I, L6 item II...]}
   (matchL4Item [this item]
-               true)
+               (when (.l4ItemMatches this item) (.formatL4Item this item)))
+
+  (l4ItemMatches [this item]
+                 true)
+
+  (formatL4Item [this item]
+                {:label (:label item) :items []}) ; TODO: Match 6 item.
 
   (buildMenu [this items]
              (js/console.log :menu items :count (count items)))
@@ -45,3 +49,7 @@
   (setValue [this value] (set! input -value value)))
 
 (register-custom-element :bm-autocomplete Autocomplete)
+
+; TODO: inlining this got us to 2.5MB from 100kb
+; Not sure why, the EDN only has 484K.
+; We can remove :level for L4 items.
