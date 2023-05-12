@@ -2,6 +2,11 @@
  :dev-http {4000 "public"}
  :nrepl false
  :builds
+ ; UI only.
  {:app {:target :esm
         :output-dir "public/js"
-        :modules {:main {:exports {default bm.nace-finder/main}}}}}}
+        :modules {:main {:exports {default bm.nace-finder/main}}}}
+  ; The worker.
+  :worker {:target :browser
+           :output-dir "public/js/workers"
+           :modules {:autocomplete {:entries [bm.workers.autocomplete]}}}}}
