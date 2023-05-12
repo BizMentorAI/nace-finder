@@ -16,7 +16,6 @@
         extra (str/trim (str (nth row 5) " " (nth row 6)))]
     (if (empty? extra) base (assoc base :extra extra))))
 
-; Nest under L4?
 (defn process-l6 [row]
   {:level (Integer/parseInt (second row)) :code (nth row 3) :label (nth row 4)})
 
