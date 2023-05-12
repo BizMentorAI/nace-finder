@@ -10,7 +10,7 @@
 
   (constructor [this]
                (super)
-               (let [autocomplete (tag :input)]
+               (let [autocomplete (tag :input {:placeholder "🔎  Type in a product or service keyword."})]
                  (append-child this (tag :style (inline "./autocomplete.css")))
                  (append-child this autocomplete)
                  (set! input autocomplete)

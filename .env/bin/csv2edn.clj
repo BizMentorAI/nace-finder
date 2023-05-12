@@ -1,4 +1,5 @@
 #!/usr/bin/env bb
+
 (defn exit-with-error [message]
   (throw (ex-info
           (str \u001b "[31m" "Error: " \u001b "[0m" message)
@@ -10,15 +11,31 @@
 (def input-file-path (first *command-line-args*))
 
 ; 4 is the industry level, 6 would be the product level.
-(defn select-row [row]
-  (= (second row) "4"))
+(defn process-l4-l5 [row]
+  (let [base {:level (Integer/parseInt (second row)) :code (nth row 3) :label (nth row 4)}
+        extra (str/trim (str (nth row 5) " " (nth row 6)))]
+    (if (empty? extra) base (assoc base :extra extra))))
+
+; Nest under L4?
+(defn process-l6 [row]
+  {:level (Integer/parseInt (second row)) :code (nth row 3) :label (nth row 4)})
 
 (defn process-row [row]
-  {:id (first row) :label (nth row 4)})
+  (cond
+    (#{"4" "5"} (second row)) (process-l4-l5 row)
+    (= (second row) "6") (process-l6 row)
+    true nil))
 
 (defn process-data [data]
-  (mapv process-row (filter select-row data)))
+  (reduce (fn [acc item]
+            (if (= (:level item) 4)
+              (conj acc (assoc item :items []))
+              (conj (butlast acc)
+                    (update-in (last acc) [:items] #(conj % item)))))
+          []
+          (filter identity (map process-row data))))
 
 (with-open [reader (io/reader input-file-path)]
-  (doall
-   (csv/write-csv *out* (prn (process-data (csv/read-csv reader))))))
+  (prn (filter (fn [l4-item]
+                 (not (empty? (:items l4-item))))
+               (process-data (csv/read-csv reader)))))
